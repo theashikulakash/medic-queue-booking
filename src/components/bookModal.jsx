@@ -1,8 +1,9 @@
 ﻿"use client";
 
-import { Envelope } from "@gravity-ui/icons";
+import { PlusShapeFill } from "@gravity-ui/icons";
 import { Button, Input, Label, Modal, Surface, TextField } from "@heroui/react";
 import React from 'react';
+import doctors from '../data/doctors.json';
 
 const BookModal = () => {
     return (
@@ -14,9 +15,9 @@ const BookModal = () => {
                         <Modal.CloseTrigger />
                         <Modal.Header>
                             <Modal.Icon className="bg-accent-soft text-accent-soft-foreground">
-                                <Envelope className="size-5" />
+                                <PlusShapeFill className="size-5" />
                             </Modal.Icon>
-                            <Modal.Heading>Contact Us</Modal.Heading>
+                            <Modal.Heading>Fill this form to book appointment</Modal.Heading>
                             <p className="mt-1.5 text-sm leading-5 text-muted">
                                 Fill out the form below and we'll get back to you. The modal adapts automatically
                                 when the keyboard appears on mobile.
@@ -26,33 +27,57 @@ const BookModal = () => {
                             <Surface variant="default">
                                 <form className="flex flex-col gap-4">
                                     <TextField className="w-full" name="name" type="text">
-                                        <Label>Name</Label>
-                                        <Input placeholder="Enter your name" />
+                                        <Label>Patients Name</Label>
+                                        <input type="text" className="input bg-neutral-content" placeholder="Enter your name" />
+                                    </TextField>
+                                    <TextField className="w-full" name="doctor" type="text">
+
+
+
+
+                                        <Label>Doctor</Label>
+                                        <select defaultValue="" name="doctor" className="select bg-neutral-content shadow-sm">
+                                            <option value="" disabled className="items-center text-center">Choose a doctor</option>
+                                            {doctors.map((doctor) => (
+                                                <option key={doctor.id} value={doctor.name}>
+                                                    {doctor.name}
+                                                </option>
+                                            ))}
+                                        </select>
                                     </TextField>
                                     <TextField className="w-full" name="email" type="email">
                                         <Label>Email</Label>
-                                        <Input placeholder="Enter your email" />
+                                        <Input placeholder="Enter your email" className="input bg-neutral-content" />
                                     </TextField>
                                     <TextField className="w-full" name="phone" type="tel">
                                         <Label>Phone</Label>
-                                        <Input placeholder="Enter your phone number" />
+                                        <Input placeholder="Enter your phone number" className="input bg-neutral-content" />
+                                    </TextField>
+                                    <TextField className="w-full" name="phone" type="tel">
+                                        <Label>Doctor</Label>
+
+                                        <select defaultValue="" name="gender" className="select bg-neutral-content shadow-sm">
+                                            <option value="" disabled className="items-center text-center">Choose Gender</option>
+                                                <option>Male</option>
+                                            <option>Female</option>
+                                            </select>
                                     </TextField>
                                     <TextField className="w-full" name="company">
-                                        <Label>Company</Label>
-                                        <Input placeholder="Enter your company name" />
+                                        <Label>Appointment Date</Label>
+                                        <input type="date" className="input bg-neutral-content" />
                                     </TextField>
                                     <TextField className="w-full" name="message">
-                                        <Label>Message</Label>
-                                        <Input placeholder="Enter your message" />
+                                        <Label>Appointment Time</Label>
+                                        <input type="time"  className="input bg-neutral-content"/>
                                     </TextField>
                                 </form>
                             </Surface>
                         </Modal.Body>
                         <Modal.Footer>
                             <Button slot="close" variant="secondary">
-                                Cancel
+                                Close
                             </Button>
-                            <Button slot="close">Send Message</Button>
+                            <Button slot="close">Book Now</Button>
                         </Modal.Footer>
                     </Modal.Dialog>
                 </Modal.Container>

@@ -63,10 +63,10 @@ const DoctorCard = ({ doctor }) => {
                         </Link>
 
                         <BookModal
-                isOpen={isModalOpen}
-                onClose={() => setIsModalOpen(false)}
-                defaultDoctorId={id}
-            />
+                            isOpen={isModalOpen}
+                            onClose={() => setIsModalOpen(false)}
+                            defaultDoctorId={id}
+                        />
                     </div>
                 </div>
             </article>
