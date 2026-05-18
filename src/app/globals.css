@@ -1,0 +1,7 @@
+@import "tailwindcss";
+@plugin "daisyui";
+@import "@heroui/styles"; 
+
+
+/* blue -- #3b75c2
+purple -- #cb6ce6 */
