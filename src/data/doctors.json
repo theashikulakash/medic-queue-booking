@@ -1,0 +1,146 @@
+[
+  {
+    "id": "d1",
+    "name": "Dr. Ayesha Rahman",
+    "specialty": "Cardiologist",
+    "image": "https://randomuser.me/api/portraits/women/63.jpg",
+    "experience": "10 years",
+    "availability": [
+      "09:00 AM - 12:00 PM",
+      "04:00 PM - 07:00 PM"
+    ],
+    "description": "Highly experienced cardiologist specializing in heart diseases, preventive care, and patient-centered treatment.",
+    "hospital": "Labaid Cardiac Hospital",
+    "location": "Dhanmondi, Dhaka",
+    "fee": 800
+  },
+  {
+    "id": "d2",
+    "name": "Prof. Dr. M. A. Baqui",
+    "specialty": "Neurologist",
+    "image": "https://randomuser.me/api/portraits/men/4.jpg",
+    "experience": "18 years",
+    "availability": [
+      "10:00 AM - 01:00 PM",
+      "06:00 PM - 09:00 PM"
+    ],
+    "description": "Expert in stroke management, chronic migraines, and complex neuromuscular disorders.",
+    "hospital": "Square Hospital",
+    "location": "Panthapath, Dhaka",
+    "fee": 1200
+  },
+  {
+    "id": "d3",
+    "name": "Dr. Nusrat Zaman",
+    "specialty": "Gynecologist",
+    "image": "https://randomuser.me/api/portraits/women/47.jpg",
+    "experience": "8 years",
+    "availability": [
+      "11:00 AM - 03:00 PM"
+    ],
+    "description": "Specialized in high-risk pregnancies, reproductive endocrinology, and laparoscopic surgeries.",
+    "hospital": "Apollo Imperial Hospital",
+    "location": "Zakir Hossain Road, Chattogram",
+    "fee": 700
+  },
+  {
+    "id": "d4",
+    "name": "Dr. Tanvir Ahmed",
+    "specialty": "Orthopedic Surgeon",
+    "image": "https://randomuser.me/api/portraits/men/26.jpg",
+    "experience": "12 years",
+    "availability": [
+      "09:30 AM - 01:30 PM",
+      "05:00 PM - 08:00 PM"
+    ],
+    "description": "Dedicated to arthroscopic surgery, joint replacements, and sports injury rehabilitation.",
+    "hospital": "Evercare Hospital",
+    "location": "Bashundhara R/A, Dhaka",
+    "fee": 1000
+  },
+  {
+    "id": "d5",
+    "name": "Dr. Fahmida Chowdhury",
+    "specialty": "Pediatrician",
+    "image": "https://randomuser.me/api/portraits/women/42.jpg",
+    "experience": "15 years",
+    "availability": [
+      "04:00 PM - 08:30 PM"
+    ],
+    "description": "Passionate about neonatal intensive care, childhood nutrition, and developmental pediatrics.",
+    "hospital": "Central Hospital",
+    "location": "Dhanmondi, Dhaka",
+    "fee": 800
+  },
+  {
+    "id": "d6",
+    "name": "Dr. Asif Iqbal",
+    "specialty": "Dermatologist",
+    "image": "https://randomuser.me/api/portraits/men/31.jpg",
+    "experience": "7 years",
+    "availability": [
+      "02:00 PM - 06:00 PM"
+    ],
+    "description": "Specializes in clinical dermatology, laser therapy, and advanced anti-aging treatments.",
+    "hospital": "Laser Medical Center",
+    "location": "Gulshan, Dhaka",
+    "fee": 900
+  },
+  {
+    "id": "d7",
+    "name": "Prof. Dr. S. M. Ali",
+    "specialty": "Oncologist",
+    "image": "https://randomuser.me/api/portraits/men/61.jpg",
+    "experience": "22 years",
+    "availability": [
+      "09:00 AM - 01:00 PM"
+    ],
+    "description": "Renowned expert in chemotherapy, cancer screening, and personalized targeted cancer therapies.",
+    "hospital": "Ahsania Mission Cancer Hospital",
+    "location": "Uttara, Dhaka",
+    "fee": 1500
+  },
+  {
+    "id": "d8",
+    "name": "Dr. Sabrina Yasmin",
+    "specialty": "Endocrinologist",
+    "image": "https://randomuser.me/api/portraits/women/26.jpg",
+    "experience": "9 years",
+    "availability": [
+      "05:00 PM - 09:00 PM"
+    ],
+    "description": "Special interest in diabetes management, thyroid disorders, and hormonal imbalances.",
+    "hospital": "BIRDEM General Hospital",
+    "location": "Shahbagh, Dhaka",
+    "fee": 800
+  },
+  {
+    "id": "d9",
+    "name": "Dr. Rezwanul Haque",
+    "specialty": "Ophthalmologist",
+    "image": "https://randomuser.me/api/portraits/men/78.jpg",
+    "experience": "11 years",
+    "availability": [
+      "10:00 AM - 02:00 PM",
+      "06:00 PM - 08:00 PM"
+    ],
+    "description": "Expert in advanced cataract surgery (Phaco), glaucoma treatment, and refractive errors.",
+    "hospital": "Bangladesh Eye Hospital",
+    "location": "Dhanmondi, Dhaka",
+    "fee": 1000
+  },
+  {
+    "id": "d10",
+    "name": "Dr. Mehedi Hasan",
+    "specialty": "Psychiatrist",
+    "image": "https://randomuser.me/api/portraits/men/76.jpg",
+    "experience": "6 years",
+    "availability": [
+      "03:00 PM - 07:00 PM"
+    ],
+    "description": "Specialized in anxiety disorders, depression therapy, and adolescent behavioral counseling.",
+    "hospital": "National Institute of Mental Health",
+    "location": "Sher-e-Bangla Nagar, Dhaka",
+    "fee": 700
+  }
+]
