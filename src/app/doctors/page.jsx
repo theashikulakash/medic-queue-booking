@@ -1,10 +1,13 @@
 import React from 'react';
 
 import DoctorCard from '@/components/doctorCard';
-import doctors from '@/data/doctors.json';
 import Navbar from '@/components/navbar';
+import { getDoctors } from '@/lib/doctors';
 
-const DoctorsPage = () => {
+const DoctorsPage = async () => {
+  const doctorsList = await getDoctors();
+
+
   return (
     <section>
          <Navbar />
@@ -18,12 +21,12 @@ const DoctorsPage = () => {
             Meet qualified doctors near you
           </h1>
           <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-slate-600">
-            Browse available doctors by specialty, experience, and location. All data is loaded from the local doctors JSON file.
+            Browse available doctors by specialty, experience, and location. All data is loaded from the backend doctors API.
           </p>
         </div>
 
         <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
-          {doctors.map((doctor) => (
+          {doctorsList.map((doctor) => (
             <DoctorCard key={doctor.id} doctor={doctor} />
           ))}
         </div>

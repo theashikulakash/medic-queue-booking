@@ -1,11 +1,11 @@
-﻿"use client";
+﻿'use client';
 
 import { PlusShapeFill } from "@gravity-ui/icons";
 import { Button, Input, Label, Modal, Surface, TextField } from "@heroui/react";
 import React from 'react';
-import doctors from '../data/doctors.json';
 
-const BookModal = () => {
+const BookModal = ({ defaultDoctorId, defaultDoctorName }) => {
+
     return (
         <Modal>
             <Button variant="danger-soft">Book Appointment</Button>
@@ -36,13 +36,8 @@ const BookModal = () => {
 
 
                                         <Label>Doctor</Label>
-                                        <select defaultValue="" name="doctor" className="select bg-neutral-content shadow-sm">
-                                            <option value="" disabled className="items-center text-center">Choose a doctor</option>
-                                            {doctors.map((doctor) => (
-                                                <option key={doctor.id} value={doctor.name}>
-                                                    {doctor.name}
-                                                </option>
-                                            ))}
+                                        <select defaultValue={defaultDoctorId} name="doctor" className="select bg-neutral-content shadow-sm">
+                                            <option value={defaultDoctorId}>{defaultDoctorName}</option>
                                         </select>
                                     </TextField>
                                     <TextField className="w-full" name="email" type="email">

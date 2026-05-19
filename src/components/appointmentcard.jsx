@@ -3,7 +3,6 @@
 import { Button } from '@heroui/react';
 import Link from 'next/link';
 import React from 'react';
-import doctorsData from '@/data/doctors.json';
 
 const AppointmentCard = ({ appointment }) => {
   const {
@@ -17,10 +16,7 @@ const AppointmentCard = ({ appointment }) => {
     appointmentTime,
   } = appointment;
 
-  const matchedDoctor =
-    doctorsData.find((doc) => doc.id === doctorId);
-
-  const doctorLink = matchedDoctor ? `/doctors/${matchedDoctor.id}` : '#';
+  const doctorLink = doctorId ? `/doctors/${doctorId}` : '#';
 
   return (
     <article className="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm transition duration-200 hover:-translate-y-1 hover:shadow-lg">
@@ -64,7 +60,7 @@ const AppointmentCard = ({ appointment }) => {
         </div>
         <div className='mx-auto justify-center flex'>
           <Link href={doctorLink}>
-            <Button disabled={!matchedDoctor}>
+            <Button disabled={!doctorId}>
               View Details
             </Button>
           </Link>

@@ -6,12 +6,12 @@ import BookModal from '@/components/bookModal';
 import { Button } from '@heroui/react';
 
 const DoctorCard = ({ doctor }) => {
-    const { id, name, specialty, image, experience, availability, description, hospital, location, fee } = doctor;
+    const { _id, id, name, specialty, image, experience, availability, description, hospital, location, fee } = doctor;
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     return (
         <section>
-            <article className="group overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm transition duration-200 hover:-translate-y-1 hover:shadow-lg">
+            <article className="group  overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm transition duration-200 hover:-translate-y-1 hover:shadow-lg">
                 <div className="relative">
                     <img
                         src={image}
@@ -53,7 +53,7 @@ const DoctorCard = ({ doctor }) => {
                     </div>
 
                     <div className='flex flex-row gap-2 mx-auto justify-center'>
-                        <Link href={`/doctors/${id}`} className='cursor-pointer w-1/2' >
+                        <Link href={`/doctors/${_id}`} className='cursor-pointer w-1/2' >
                             <Button
                                 variant="danger"
                                 className="w-full rounded-2xl px-4 py-3 text-sm font-semibold transition"
@@ -65,7 +65,8 @@ const DoctorCard = ({ doctor }) => {
                         <BookModal
                             isOpen={isModalOpen}
                             onClose={() => setIsModalOpen(false)}
-                            defaultDoctorId={id}
+                            defaultDoctorId={_id}
+                            defaultDoctorName={name}
                         />
                     </div>
                 </div>

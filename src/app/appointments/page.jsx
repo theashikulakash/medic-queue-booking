@@ -1,10 +1,14 @@
 import React from 'react';
 
 import AppointmentCard from '@/components/appointmentcard';
-import appointments from '@/data/appointment.json';
+// import appointments from '@/data/appointment.json';
 import Navbar from '@/components/navbar';
+import { getAppointment } from '@/lib/appointment';
 
-const Appointments = () => {
+const Appointments = async () => {
+
+const appointments = await getAppointment();
+
   return (
     <section>
         <Navbar />
