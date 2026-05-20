@@ -6,8 +6,11 @@ import React from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { authClient } from '@/lib/auth-client';
+import { useRouter } from 'next/navigation';
 
 const BookModal = ({ defaultDoctorId, defaultDoctorName }) => {
+
+    const router = useRouter();
     const { data: session } = authClient.useSession();
     const user = session?.user;
     const defaultName = user?.name ?? '';
@@ -55,6 +58,7 @@ const BookModal = ({ defaultDoctorId, defaultDoctorName }) => {
             const data = await res.json();
             console.log('Appointment saved', data);
             toast.success('You booked successfully!');
+            router.push('/appointments');
         } catch (error) {
             console.error('Booking failed', error);
             toast.error('Booking failed. Please try again.');
