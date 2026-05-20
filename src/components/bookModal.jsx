@@ -76,7 +76,7 @@ const BookModal = ({ defaultDoctorId, defaultDoctorName }) => {
                             </Modal.Icon>
                             <Modal.Heading>Fill this form to book appointment</Modal.Heading>
                             <p className="mt-1.5 text-sm leading-5 text-muted">
-                                Fill out the form below and we'll get back to you. The modal adapts automatically
+                                Fill out the form below and we&apos;ll get back to you. The modal adapts automatically
                                 when the keyboard appears on mobile.
                             </p>
                         </Modal.Header>
