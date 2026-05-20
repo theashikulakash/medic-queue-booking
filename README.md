@@ -1,36 +1,93 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Medic Queue
 
-## Getting Started
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Available-brightgreen)](https://medic-queue.vercel.app)
+[![Next.js](https://img.shields.io/badge/Framework-Next.js-black)](https://nextjs.org)
+[![React](https://img.shields.io/badge/Library-React-blue)](https://reactjs.org)
+[![Tailwind CSS](https://img.shields.io/badge/Styling-Tailwind%20CSS-skyblue)](https://tailwindcss.com)
 
-First, run the development server:
+> **Medic Queue** is a polished doctor appointment booking platform built with modern Next.js and React technologies. It enables patients to explore doctors, reserve appointments, and manage bookings in a responsive, user-first interface.
+
+## 🌐 Live Demo
+
+Visit the live application:
+
+- https://medic-queue.vercel.app
+
+## ✨ Key Features
+
+- Secure authentication flow with email login and social login support
+- Browse a curated doctor directory with specialty, availability, and booking options
+- Patient appointment management and booking workflows
+- Personalized dashboard showing assigned appointments and user-specific details
+- Modern responsive UI with Tailwind CSS and HeroUI components
+- Production-ready deployment on Vercel
+
+## 🧭 Pages Included
+
+- `Home` — landing page with hero content and service highlights
+- `Doctors` — searchable doctor list and detail views
+- `Appointments` — patient appointment overview and status
+- `Dashboard` — authenticated user dashboard for appointment tracking
+- `Login` / `Signup` — secure entry points for users
+
+## 🛠️ Tech Stack
+
+- Next.js 16 (App Router)
+- React 19
+- Tailwind CSS v4
+- Better Auth for authentication
+- MongoDB adapter for session persistence
+- React Toastify for notifications
+- HeroUI for polished form and layout components
+
+## 🚀 Getting Started
+
+### Install dependencies
+
+```bash
+npm install
+```
+
+### Run locally
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open `http://localhost:3000` in your browser.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+### Build for production
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm start
+```
 
-## Learn More
+## 🧩 Project Structure
 
-To learn more about Next.js, take a look at the following resources:
+- `src/app` — application routes and page layouts
+- `src/components` — reusable UI components and client-side modules
+- `src/lib` — authentication and data service helpers
+- `src/public` — static assets
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## ✅ Deployment
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+This project is deployed on Vercel. Use the following command to create a new deploy if needed:
 
-## Deploy on Vercel
+```bash
+vercel --prod
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📌 Notes
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Ensure environment variables are configured for authentication and database access
+- The app is built with responsiveness and mobile-first design in mind
+- The `login` route preserves the destination route so users return to the page they requested after authentication
+
+## 💬 Feedback
+
+If you want to improve this project further, feel free to submit enhancements or open an issue.
+
+---
+
+Created with a focus on modern healthcare UX and appointment management workflows.
