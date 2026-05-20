@@ -84,7 +84,7 @@ const Navbar = () => {
             <>
               <li>
                 <Avatar>
-                  <Link href={'/user'} className="cursor-pointer">
+                  <Link href={'/dashboard'} className="cursor-pointer">
                     <Avatar.Image
                       referrerPolicy="no-referrer" alt="John Doe"
                       className="h-full w-full object-cover"

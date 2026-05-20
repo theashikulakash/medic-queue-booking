@@ -1,184 +1,167 @@
 "use client";
+import { FcGoogle } from "react-icons/fc";
+import { Card, Separator } from "@heroui/react";
 
-import { useState } from "react";
-import Link from "next/link";
+import {
+    Button,
+    Description,
+    FieldError,
+    Form,
+    Input,
+    Label,
+    TextField,
+} from "@heroui/react";
 import { authClient } from "@/lib/auth-client";
-import Navbar from "@/components/navbar";
+import { useRouter } from "next/navigation";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import Footer from "@/components/footer";
+import Navbar from "@/components/navbar";
 
-const validatePassword = (password) => {
-    return /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/.test(password);
-};
+const SignUpPage = () => {
+    const router = useRouter();
 
-export default function SignupPage() {
-    const [name, setName] = useState("");
-    const [email, setEmail] = useState("");
-    const [imageUrl, setImageUrl] = useState("");
-    const [password, setPassword] = useState("");
-    const [error, setError] = useState("");
-    const [message, setMessage] = useState("");
-    const [loading, setLoading] = useState(false);
+    const onSubmit = async (e) => {
+        e.preventDefault();
 
-    const handleSubmit = async (event) => {
-        event.preventDefault();
-        setError("");
-        setMessage("");
+        const formData = new FormData(e.currentTarget);
+        const user = Object.fromEntries(formData.entries());
 
-        if (!name.trim()) {
-            setError("Name is required.");
+        const { data, error } = await authClient.signUp.email({
+            email: user.email,
+            password: user.password,
+            name: user.name,
+            image: user.image,
+        });
+
+        if (error) {
+            toast.error(error.message || "Signup failed. Please try again.");
             return;
         }
 
-        if (!email.trim()) {
-            setError("Email is required.");
-            return;
-        }
-
-        if (!validatePassword(password)) {
-            setError(
-                "Password must be at least 6 characters and include one uppercase and one lowercase letter."
-            );
-            return;
-        }
-
-        setLoading(true);
-
-        try {
-            const callbackURL = `${window.location.origin}/dashboard`;
-            const { data, error: signUpError } = await authClient.signUp.email({
-                name,
-                email,
-                password,
-                image: imageUrl,
-                callbackURL,
-            });
-
-            if (signUpError) {
-                setError(signUpError.message || "Unable to create account. Please try again.");
-                return;
-            }
-
-            if (data) {
-                setMessage(
-                    "Your account was created successfully. Please check your email to confirm your address or continue to login."
-                );
-                setName("");
-                setEmail("");
-                setImageUrl("");
-                setPassword("");
-            }
-        } catch (err) {
-            setError("Unexpected error while creating account. Please try again.");
-        } finally {
-            setLoading(false);
+        if (data) {
+            toast.success("Signup successful! Please log in.");
+            await authClient.signOut();
+            router.push("/login");
         }
     };
 
+    const handleGoogleSignin = async () => {
+        await authClient.signIn.social({
+            provider: "google"
+        })
+
+    }
+
     return (
-        <section >
+        <section className="min-h-screen bg-gradient-to-br from-[#fbfcff] via-[#eef6ff] to-white">
             <Navbar />
-            <main className="min-h-screen bg-slate-50 flex items-center justify-center px-4 py-10">
-                <section className="w-full max-w-xl rounded-3xl bg-white p-8 shadow-xl ring-1 ring-slate-200 sm:p-10">
-                    <div className="mb-8 text-center">
-                        <p className="text-sm font-semibold uppercase tracking-[0.3em] text-[#3b75c2]">
-                            Create your account
-                        </p>
-                        <h1 className="mt-4 text-3xl font-semibold text-slate-900">
-                            Sign up for Medic Queue
+            <div className="mx-auto  py-16 mb-8 flex w-11/12 max-w-6xl flex-col gap-10 px-4 sm:px-6 lg:px-8">
+                <div className="grid items-center gap-10 lg:grid-cols-[1.1fr_.9fr]">
+                    <div className="space-y-4">
+                        <span className="inline-flex rounded-full bg-sky-100 px-4 py-2 text-sm font-semibold text-sky-700">
+                            Medic Queue registration
+                        </span>
+                        <h1 className="text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">
+                            Create your account for faster doctor booking.
                         </h1>
-                        <p className="mt-3 text-sm leading-6 text-slate-600">
-                            Fill in your details below to register. Password must include at least one uppercase letter and one lowercase letter.
+                        <p className="max-w-xl text-base leading-7 text-slate-600">
+                            Easily register to manage appointments, connect with trusted specialists, and receive care reminders.
                         </p>
                     </div>
 
-                    <form onSubmit={handleSubmit} className="space-y-6">
-                        {error ? (
-                            <div className="rounded-2xl bg-rose-50 p-4 text-sm text-rose-700 ring-1 ring-rose-200">
-                                {error}
-                            </div>
-                        ) : null}
+                    <Card className="rounded-[2rem] border border-slate-200/80 bg-white/95 w-11/12 p-8 mx-auto shadow-xl shadow-slate-200/40 backdrop-blur-sm">
+                        <Form varient="primary" onSubmit={onSubmit} className="flex w-full text-black flex-col gap-5">
+                            <h2 className="text-center text-xl font-bold mb-3">Signup</h2>
+                            <TextField isRequired name="name" type="text">
+                                <Label>Name</Label>
+                                <Input
+                                    className="bg-slate-100 border-slate-200 w-full text-slate-900"
+                                    placeholder="Enter your name" />
+                                <FieldError />
+                            </TextField>
 
-                        {message ? (
-                            <div className="rounded-2xl bg-emerald-50 p-4 text-sm text-emerald-700 ring-1 ring-emerald-200">
-                                {message}
-                            </div>
-                        ) : null}
+                            <TextField name="image" type="url">
+                                <Label>Image URL</Label>
+                                <Input className="bg-slate-100 border-slate-200 w-full  text-slate-900" placeholder="Image url" />
+                                <FieldError />
+                            </TextField>
 
-                        <div>
-                            <label htmlFor="name" className="block text-sm font-medium text-slate-900">
-                                Full Name
-                            </label>
-                            <input
-                                id="name"
-                                type="text"
-                                value={name}
-                                onChange={(e) => setName(e.target.value)}
-                                className="mt-2 w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 shadow-sm outline-none transition focus:border-[#3b75c2] focus:ring-2 focus:ring-[#3b75c2]/20"
-                                placeholder="John Doe"
-                            />
-                        </div>
-
-                        <div>
-                            <label htmlFor="email" className="block text-sm font-medium text-slate-900">
-                                Email address
-                            </label>
-                            <input
-                                id="email"
+                            <TextField
+                                isRequired
+                                name="email"
                                 type="email"
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
-                                className="mt-2 w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 shadow-sm outline-none transition focus:border-[#3b75c2] focus:ring-2 focus:ring-[#3b75c2]/20"
-                                placeholder="john.doe@example.com"
-                            />
-                        </div>
-
-                        <div>
-                            <label htmlFor="imageUrl" className="block text-sm font-medium text-slate-900">
-                                Profile Image URL
-                            </label>
-                            <input
-                                id="imageUrl"
-                                type="url"
-                                value={imageUrl}
-                                onChange={(e) => setImageUrl(e.target.value)}
-                                className="mt-2 w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 shadow-sm outline-none transition focus:border-[#3b75c2] focus:ring-2 focus:ring-[#3b75c2]/20"
-                                placeholder="https://example.com/image.png"
-                            />
-                        </div>
-
-                        <div>
-                            <label htmlFor="password" className="block text-sm font-medium text-slate-900">
-                                Password
-                            </label>
-                            <input
-                                id="password"
+                                validate={(value) => {
+                                    if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(value)) {
+                                        return "Please enter a valid email address";
+                                    }
+                                    return null;
+                                }}
+                            >
+                                <Label>Email</Label>
+                                <Input className="bg-slate-100 border-slate-200 w-full  text-slate-900" placeholder="john@example.com" />
+                                <FieldError />
+                            </TextField>
+                            <TextField
+                                isRequired
+                                minLength={8}
+                                name="password"
                                 type="password"
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)}
-                                className="mt-2 w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 shadow-sm outline-none transition focus:border-[#3b75c2] focus:ring-2 focus:ring-[#3b75c2]/20"
-                                placeholder="Enter a strong password"
-                            />
+                                validate={(value) => {
+                                    if (value.length < 8) {
+                                        return "Password must be at least 8 characters";
+                                    }
+                                    if (!/[A-Z]/.test(value)) {
+                                        return "Password must contain at least one uppercase letter";
+                                    }
+                                    if (!/[0-9]/.test(value)) {
+                                        return "Password must contain at least one number";
+                                    }
+                                    return null;
+                                }}
+                            >
+                                <Label>Password</Label>
+                                <Input className="bg-slate-100 border-slate-200 w-full  text-slate-900" placeholder="Enter your password" />
+                                <Description>
+                                    Must be at least 8 characters with 1 uppercase and 1 number
+                                </Description>
+                                <FieldError />
+                            </TextField>
+                            <div className="flex justify-center gap-2">
+                                <Button className="w-full rounded-full bg-cyan-600 px-6 py-3 text-white hover:bg-cyan-700" type="submit">
+                                    Create Account
+                                </Button>
+                            </div>
+                        </Form>
+                        <div>
+                            <div className="flex flex-row items-center py-4">
+                                <div className="w-4/12 text-slate-500">
+                                    <Separator />
+
+                                </div>
+                                <div className="whitespace-nowrap text-sm px-4 text-slate-500">Or continue with</div>
+                                <div className="w-4/12 text-slate-500">
+                                    <Separator />
+
+                                </div>
+                            </div>
+
+                            <Button
+                                onClick={handleGoogleSignin}
+                                variant="outline"
+                                className="flex w-full items-center justify-center gap-3 rounded-full border-slate-300 px-6 py-3 text-slate-700 hover:bg-slate-100"
+                            >
+                                <FcGoogle className="text-xl" />
+                                Sign up with Google
+                            </Button>
                         </div>
-
-                        <button
-                            type="submit"
-                            disabled={loading}
-                            className="inline-flex w-full items-center justify-center rounded-2xl bg-[#3b75c2] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#345aa5] disabled:cursor-not-allowed disabled:opacity-60"
-                        >
-                            {loading ? "Creating account..." : "Sign up"}
-                        </button>
-                    </form>
-
-                    <p className="mt-6 text-center text-sm text-slate-600">
-                        Already have an account?{' '}
-                        <Link href="/login" className="font-semibold text-[#3b75c2] hover:text-[#345aa5]">
-                            Sign in
-                        </Link>
-                    </p>
-                </section>
-            </main>
+                        <ToastContainer position="top-right" autoClose={3000} hideProgressBar={false} newestOnTop closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover />
+                    </Card>
+                </div>
+            </div>
             <Footer />
         </section>
-
     );
-}
+};
+
+export default SignUpPage;

@@ -2,12 +2,15 @@
 
 import Link from 'next/link';
 import React, { useState } from 'react';
+import { authClient } from '@/lib/auth-client';
 import BookModal from '@/components/bookModal';
 import { Button } from '@heroui/react';
 
 const DoctorCard = ({ doctor }) => {
     const { _id, id, name, specialty, image, experience, availability, description, hospital, location, fee } = doctor;
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const { data: session } = authClient.useSession();
+    const user = session?.user;
 
     return (
         <section>
@@ -53,7 +56,7 @@ const DoctorCard = ({ doctor }) => {
                     </div>
 
                     <div className='flex flex-row gap-2 mx-auto justify-center'>
-                        <Link href={`/doctors/${_id}`} className='cursor-pointer w-1/2' >
+                        <Link href={user ? `/doctors/${_id}` : '/login'} className='cursor-pointer w-1/2' >
                             <Button
                                 variant="danger"
                                 className="w-full rounded-2xl px-4 py-3 text-sm font-semibold transition"

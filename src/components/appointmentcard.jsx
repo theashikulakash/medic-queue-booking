@@ -3,6 +3,9 @@
 import { Button } from '@heroui/react';
 import Link from 'next/link';
 import React from 'react';
+import { authClient } from '@/lib/auth-client';
+import { toast } from 'react-toastify';
+import { useRouter } from 'next/navigation';
 
 const AppointmentCard = ({ appointment }) => {
   const {
@@ -17,6 +20,39 @@ const AppointmentCard = ({ appointment }) => {
   } = appointment;
 
   const doctorLink = doctorId ? `/doctors/${doctorId}` : '#';
+  const router = useRouter();
+
+  const handleDelete = async () => {
+    const ok = window.confirm('Delete this appointment?');
+    if (!ok) return;
+
+    try {
+      const { data: tokenData } = await authClient.token();
+      const baseUrl = process.env.NEXT_PUBLIC_SERVER_URL;
+      const url = baseUrl ? `${baseUrl}/appointment/${appointment._id || appointment.id}` : `/appointment/${appointment._id || appointment.id}`;
+
+      const res = await fetch(url, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+          ...(tokenData?.token ? { authorization: `Bearer ${tokenData.token}` } : {}),
+        },
+      });
+
+      if (!res.ok) throw new Error(`Delete failed: ${res.status}`);
+
+      const data = await res.json();
+      if (data.deletedCount === 1 || data.acknowledged) {
+        toast.success('Appointment deleted');
+        router.refresh();
+      } else {
+        toast.error('Delete failed');
+      }
+    } catch (err) {
+      console.error('Delete error', err);
+      toast.error('Failed to delete appointment');
+    }
+  };
 
   return (
     <article className="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm transition duration-200 hover:-translate-y-1 hover:shadow-lg">
@@ -58,12 +94,15 @@ const AppointmentCard = ({ appointment }) => {
           <p className="font-semibold text-slate-800">Appointment details</p>
           <p className="mt-2 text-slate-600">This appointment is scheduled with {doctorName} for {patientName}.</p>
         </div>
-        <div className='mx-auto justify-center flex'>
+        <div className='mx-auto justify-center flex gap-2'>
           <Link href={doctorLink}>
             <Button disabled={!doctorId}>
               View Details
             </Button>
           </Link>
+          <Button variant="danger" onClick={handleDelete} className="ml-2">
+            Delete
+          </Button>
         </div>
       </div>
     </article>

@@ -68,7 +68,7 @@ const DoctorDetailsClient = ({ doctor }) => {
                 <BookModal
                   isOpen={isModalOpen}
                   onClose={() => setIsModalOpen(false)}
-                  defaultDoctorId={id}
+                  defaultDoctorId={_id}
                   defaultDoctorName={name}
                 />
               </div>
