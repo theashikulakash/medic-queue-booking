@@ -284,7 +284,7 @@ const DashboardPage = () => {
                   <p className="text-lg font-semibold text-slate-800">You are not signed in.</p>
                   <p className="mt-2">Sign in to see appointments assigned to your email.</p>
                   <div className="mt-4 flex justify-center">
-                    <Link href="/login">
+                    <Link href="/login?from=/dashboard">
                       <Button variant="primary" className="rounded-full px-6 py-3">
                         Sign In
                       </Button>

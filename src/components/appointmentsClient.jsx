@@ -14,7 +14,7 @@ const AppointmentsClient = ({ appointments = [] }) => {
       <div className="py-12 text-center">
         <p className="mb-4 text-lg text-slate-700">Please sign in to view your appointments.</p>
         <div className="flex justify-center gap-4">
-          <Link href="/login" className="rounded-full bg-cyan-600 px-5 py-2 text-white">Sign in</Link>
+          <Link href="/login?from=/appointments" className="rounded-full bg-cyan-600 px-5 py-2 text-white">Sign in</Link>
         </div>
       </div>
     );

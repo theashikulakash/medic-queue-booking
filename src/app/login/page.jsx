@@ -11,7 +11,7 @@ import {
   TextField,
 } from "@heroui/react";
 import { authClient } from "@/lib/auth-client";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { FcGoogle } from "react-icons/fc";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -20,6 +20,9 @@ import Footer from "@/components/footer";
 
 const LoginPage = () => {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const requestedRoute = searchParams.get("from");
+  const redirectTo = requestedRoute && requestedRoute !== "/login" ? requestedRoute : "/";
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -39,7 +42,7 @@ const LoginPage = () => {
 
     if (data) {
       toast.success("Login successful!");
-      router.push("/");
+      router.push(redirectTo);
     }
   };
 
