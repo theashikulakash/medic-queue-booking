@@ -2,16 +2,23 @@ export async function getDoctors() {
   const baseUrl = process.env.NEXT_PUBLIC_SERVER_URL;
 
   if (!baseUrl) {
-    throw new Error('Environment variable NEXT_PUBLIC_SERVER_URL is not defined');
+    console.error('Environment variable NEXT_PUBLIC_SERVER_URL is not defined');
+    return [];
   }
 
-  const res = await fetch(`${baseUrl}/doctors`, {
-    cache: 'no-store',
-  });
+  try {
+    const res = await fetch(`${baseUrl}/doctors`, {
+      cache: 'no-store',
+    });
 
-  if (!res.ok) {
-    throw new Error(`Failed to fetch doctors: ${res.status}`);
+    if (!res.ok) {
+      console.error(`Failed to fetch doctors: ${res.status}`);
+      return [];
+    }
+
+    return res.json();
+  } catch (error) {
+    console.error('Failed to fetch doctors:', error);
+    return [];
   }
-
-  return res.json();
 }

@@ -5,9 +5,9 @@ import { getDoctors } from '@/lib/doctors';
 const TopDoctors = async () => {
   const doctorsList = await getDoctors();
 
-    const selectedDoctors = [...doctorsList].sort(() => Math.random() - 0.5).slice(0, 3);
+  const selectedDoctors = doctorsList.slice(0, 3);
 
-    return (
+  return (
         <section className="space-y-6 px-4 py-8 md:px-6">
             <div className="text-center">
                 <p className="text-sm font-semibold uppercase tracking-[0.3em] text-slate-500">Featured Practitioners</p>
@@ -18,9 +18,16 @@ const TopDoctors = async () => {
             </div>
 
             <div className="grid gap-6 lg:grid-cols-3 w-10/12 mx-auto">
-                {selectedDoctors.map((doctor) => (
+                {selectedDoctors.length > 0 ? (
+                  selectedDoctors.map((doctor) => (
                     <DoctorCard key={doctor.id} doctor={doctor} />
-                ))}
+                  ))
+                ) : (
+                  <div className="col-span-3 rounded-3xl border border-slate-200 bg-white p-10 text-center text-slate-600 shadow-sm">
+                    <p className="text-lg font-medium">No doctors are available right now.</p>
+                    <p className="mt-2 text-sm">Please check back later or contact support for assistance.</p>
+                  </div>
+                )}
             </div>
         </section>
     );

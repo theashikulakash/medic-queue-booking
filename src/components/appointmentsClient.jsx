@@ -32,7 +32,10 @@ const AppointmentsClient = ({ appointments = [] }) => {
   return (
     <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
       {matched.map((appointment) => (
-        <AppointmentCard key={appointment.id} appointment={appointment} />
+        <AppointmentCard
+          key={appointment._id}
+          appointment={appointment}
+        />
       ))}
     </div>
   );

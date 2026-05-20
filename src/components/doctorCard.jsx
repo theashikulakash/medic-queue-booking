@@ -22,7 +22,7 @@ const DoctorCard = ({ doctor }) => {
                         alt={name}
                         width={720}
                         height={224}
-                        className="h-56 w-full object-cover"
+                        className="h-56 w-full rounded-t-2xl object-cover"
                     />
                     <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent px-4 py-3 text-white">
                         <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-200">{specialty}</p>

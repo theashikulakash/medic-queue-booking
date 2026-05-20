@@ -43,7 +43,14 @@ const Navbar = () => {
         </div>
 
         <Link href="/" className="hidden lg:flex">
-          <Image src="/logo.png" height={40} width={250} alt="logo" priority />
+          <Image
+            src="/logo.png"
+            width={180}
+            height={50}
+            style={{ height: 'auto' }} 
+            className="w-32"
+            alt="Logo"
+          />
         </Link>
       </div>
 
@@ -52,24 +59,31 @@ const Navbar = () => {
 
         <ul className="flex gap-2 ml-2 ">
           <li>
-              <Link href={"/"}>Home</Link>
-            </li>
-            <li>
-              <Link href={"/appointments"}>All Appointment</Link>
-            </li>
+            <Link href={"/"}>Home</Link>
+          </li>
+          <li>
+            <Link href={"/appointments"}>All Appointment</Link>
+          </li>
 
-            <li>
-              <Link href={"/doctors"}>Doctors</Link>
-            </li>
-            <li>
-              <Link href={"/dashboard"}>Dashboard</Link>
-            </li>
+          <li>
+            <Link href={"/doctors"}>Doctors</Link>
+          </li>
+          <li>
+            <Link href={"/dashboard"}>Dashboard</Link>
+          </li>
         </ul>
       </div>
 
       <div className="sm:navbar-center lg:hidden">
         <Link href="/">
-          <Image src="/logo.png" height={40} width={250} alt="logo" priority />
+          <Image
+            src="/logo.png"
+            width={180}
+            height={50}
+            style={{ height: 'auto' }} 
+            className="w-32"
+            alt="Logo"
+          />
         </Link>
       </div>
 
@@ -86,7 +100,8 @@ const Navbar = () => {
                 <Avatar>
                   <Link href={'/dashboard'} className="cursor-pointer">
                     <Avatar.Image
-                      referrerPolicy="no-referrer" alt="John Doe"
+                      referrerPolicy="no-referrer" 
+                      alt="John Doe"
                       className="h-full w-full object-cover"
                       src={user?.image} />
                   </Link>
