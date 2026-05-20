@@ -4,7 +4,7 @@ const Stats = () => {
     const statsData = [
         {
             id: 1,
-            number: "17,24,698",
+            number: "17,24,678",
             label: "Total Patients Served",
             bgColor: "bg-blue-50",
             textColor: "text-[#3b75c2]"
