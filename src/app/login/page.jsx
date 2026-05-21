@@ -21,8 +21,11 @@ import Footer from "@/components/footer";
 const LoginPage = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
+  
+  // Safely extract and decode the redirect path from the query parameter
   const requestedRoute = searchParams.get("from");
-  const redirectTo = requestedRoute && requestedRoute !== "/login" ? requestedRoute : "/";
+  const decodedRoute = requestedRoute ? decodeURIComponent(requestedRoute) : null;
+  const redirectTo = decodedRoute && decodedRoute !== "/login" ? decodedRoute : "/";
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -31,8 +34,8 @@ const LoginPage = () => {
     const user = Object.fromEntries(formData.entries());
 
     const { data, error } = await authClient.signIn.email({
-      email: user.email,
-      password: user.password,
+      email: user.email as string,
+      password: user.password as string,
     });
 
     if (error) {
@@ -47,8 +50,13 @@ const LoginPage = () => {
   };
 
   const handleGoogleSignin = async () => {
+    // Generate the full absolute URL necessary for social provider redirect callbacks
+    const origin = typeof window !== "undefined" ? window.location.origin : "https://medic-queue.vercel.app";
+    const callbackUrl = `${origin}${redirectTo}`;
+
     await authClient.signIn.social({
       provider: "google",
+      callbackURL: callbackUrl,
     });
   };
 
@@ -122,12 +130,10 @@ const LoginPage = () => {
             <div className="flex flex-row items-center py-4">
               <div className="w-4/12 text-slate-500">
                 <Separator />
-
               </div>
               <div className="whitespace-nowrap text-sm px-4 text-slate-500">Or continue with</div>
               <div className="w-4/12 text-slate-500">
                 <Separator />
-
               </div>
             </div>
 
@@ -139,8 +145,8 @@ const LoginPage = () => {
               <FcGoogle className="text-xl" />
               Continue with Google
             </Button>
-<ToastContainer position="top-right" autoClose={3000} hideProgressBar={false} newestOnTop closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover />
-            </Card>
+            <ToastContainer position="top-right" autoClose={3000} hideProgressBar={false} newestOnTop closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover />
+          </Card>
         </div>
       </div>
       <Footer />
