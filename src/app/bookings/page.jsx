@@ -11,7 +11,7 @@ const Bookings = async () => {
   return (
     <section>
       <Navbar />
-      <main className="bg-slate-50 min-h-[80vh] py-10">
+      <main className="bg-slate-50 min-h-screen py-10">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mb-10 text-center">
             <p className="text-sm font-semibold uppercase tracking-[0.3em] text-[#3b75c2]">

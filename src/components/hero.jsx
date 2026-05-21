@@ -32,14 +32,14 @@ const Hero = () => {
                     </div>
 
                     <div className="flex flex-wrap gap-4 mt-6">
-                        <Link href="/doctors">
+                        <Link href="/appointment">
                             <Button variant="primary" className="rounded-full px-6 py-3">
-                                Browse Doctors
+                                Appointments
                             </Button>
                         </Link>
                         <Link href="/bookings">
                             <Button variant="danger-soft" className="rounded-full px-6 py-3">
-                                Bookings
+                                My Bookings
                             </Button>
                         </Link>
                     </div>

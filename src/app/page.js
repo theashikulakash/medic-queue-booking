@@ -5,6 +5,7 @@ import Stats from "@/components/stats";
 import TopDoctors from "@/components/topdoctors";
 import Service from "@/components/service";
 import Newsletter from "@/components/newsletter";
+import Testimonials from "@/components/testimonials";
 // import Image from "next/image";
 
 export default function Home() {
@@ -16,6 +17,7 @@ export default function Home() {
       <Stats />
       <TopDoctors />
       <Newsletter />
+      <Testimonials />
       <Footer />
     </section>
   );

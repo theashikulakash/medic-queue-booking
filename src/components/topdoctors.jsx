@@ -5,7 +5,9 @@ import { getDoctors } from '@/lib/doctors';
 const TopDoctors = async () => {
   const doctorsList = await getDoctors();
 
-  const selectedDoctors = doctorsList.slice(0, 3);
+ const selectedDoctors = [...doctorsList]
+  .sort(() => Math.random() - 0.5)
+  .slice(0, 3);
 
   return (
         <section className="space-y-6 px-4 py-8 md:px-6">
