@@ -12,7 +12,7 @@ import Footer from "@/components/footer";
 export const dynamic = 'force-dynamic';
 
 const DashboardPage = () => {
-  const { data: session } = authClient.useSession();
+  const { data: session, isPending } = authClient.useSession();
   const user = session?.user;
   const [appointments, setAppointments] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -265,7 +265,13 @@ const DashboardPage = () => {
             </div>
 
             <div className="mt-6 space-y-4">
-              {loading ? (
+              {isPending ? (
+                <div className="rounded-3xl border border-dashed border-slate-300 bg-slate-50 p-10 text-center text-slate-500">
+                  <div className="mx-auto mb-4 h-12 w-12 animate-spin rounded-full border-4 border-slate-300 border-t-cyan-600" />
+                  <p className="text-base font-semibold text-slate-700">Loading your session...</p>
+                  <p className="mt-2 text-sm text-slate-500">Please wait while we verify your authentication.</p>
+                </div>
+              ) : loading ? (
                 <div className="rounded-3xl border border-dashed border-slate-300 bg-slate-50 p-10 text-center text-slate-500">
                   <div className="mx-auto mb-4 h-12 w-12 animate-spin rounded-full border-4 border-slate-300 border-t-cyan-600" />
                   <p className="text-base font-semibold text-slate-700">Loading appointments...</p>
