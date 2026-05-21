@@ -60,7 +60,7 @@ const DoctorCard = ({ doctor }) => {
                     </div>
 
                     <div className='flex flex-row gap-2 mx-auto justify-center'>
-                        <Link href={user ? `/appointment/${_id}` : `/login?from=/appointment/${_id}`} className='cursor-pointer w-1/2' >
+                        <Link href={`/doctors/${_id}`} className='cursor-pointer w-1/2' >
                             <Button
                                 variant="danger"
                                 className="w-full rounded-2xl px-4 py-3 text-sm font-semibold transition"

@@ -21,7 +21,7 @@ const AppointmentCard = ({ appointment }) => {
     appointmentTime,
   } = appointment;
 
-  const doctorLink = doctorId ? `/appointment/${doctorId}` : '#';
+  const doctorLink = doctorId ? `/doctors/${doctorId}` : '#';
   const router = useRouter();
 
   const handleDelete = async () => {
