@@ -7,6 +7,7 @@ import Navbar from '@/components/navbar';
 import Footer from '@/components/footer';
 import BookModal from '@/components/bookModal';
 
+
 const DoctorDetailsClient = ({ doctor }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const {

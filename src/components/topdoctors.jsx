@@ -1,6 +1,7 @@
 import React from 'react';
 import DoctorCard from './doctorCard';
 import { getDoctors } from '@/lib/doctors';
+export const dynamic = 'force-dynamic';
 
 const TopDoctors = async () => {
   const doctorsList = await getDoctors();
