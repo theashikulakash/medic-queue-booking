@@ -56,8 +56,8 @@ const DashboardPage = () => {
       const { data: tokenData } = await authClient.token();
       const baseUrl = process.env.NEXT_PUBLIC_SERVER_URL;
       const url = baseUrl
-        ? `${baseUrl}/users/${encodeURIComponent(user.email)}`
-        : `/users/${encodeURIComponent(user.email)}`;
+        ? `${baseUrl}/user/${encodeURIComponent(user.email)}`
+        : `/user/${encodeURIComponent(user.email)}`;
 
       const response = await fetch(url, {
         method: "PATCH",
