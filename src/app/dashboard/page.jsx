@@ -52,6 +52,7 @@ const DashboardPage = () => {
 
     setSaving(true);
     try {
+      const { data: tokenData } = await authClient.token();
       const baseUrl = process.env.NEXT_PUBLIC_SERVER_URL;
       const url = baseUrl
         ? `${baseUrl}/users/${encodeURIComponent(user.email)}`
@@ -59,7 +60,10 @@ const DashboardPage = () => {
 
       const response = await fetch(url, {
         method: "PATCH",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          ...(tokenData?.token ? { authorization: `Bearer ${tokenData.token}` } : {}),
+        },
         body: JSON.stringify({
           name: editedProfile.name,
           gender: editedProfile.gender,
@@ -96,7 +100,7 @@ const DashboardPage = () => {
       setLoading(true);
       try {
         const baseUrl = process.env.NEXT_PUBLIC_SERVER_URL;
-        const url = baseUrl ? `${baseUrl}/appointments` : "/appointments";
+        const url = baseUrl ? `${baseUrl}/bookings` : "/bookings";
         const res = await fetch(url, { cache: "no-store" });
         if (!res.ok) {
           throw new Error(`Failed to load appointments: ${res.status}`);
@@ -144,12 +148,12 @@ const DashboardPage = () => {
               <p className="mt-2 text-slate-600">Profile details and appointments linked to your email.</p>
             </div>
             <div className="flex flex-wrap gap-3">
-              <Link href="/appointments">
+              <Link href="/bookings">
                 <Button variant="secondary" className="rounded-full px-6 py-3">
-                  Browse Appointments
+                  Browse Bookings
                 </Button>
               </Link>
-              <Link href="/doctors">
+              <Link href="/appointment">
                 <Button variant="secondary" className="rounded-full px-6 py-3">
                   Browse Doctors
                 </Button>
@@ -163,7 +167,7 @@ const DashboardPage = () => {
             <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
               <div className="flex items-center gap-4">
                 <div className="flex h-20 w-20 items-center justify-center rounded-3xl bg-slate-100 text-3xl font-semibold text-slate-700">
-                  {profileDisplay.name?.charAt(0) || "G"}
+                  {profileDisplay.name?.charAt(0).toUpperCase() || "G"}
                 </div>
                 <div>
                   <p className="text-xs uppercase tracking-[0.18em] text-slate-500">Profile</p>

@@ -4,7 +4,7 @@ import { headers } from "next/headers";
 const DoctorDetails = async ({ params }) => {
     const { id } = await params;
 
-    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/doctors/${id}`)
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/appointment/${id}`)
     const doctor = await res.json();
 
     console.log(doctor)

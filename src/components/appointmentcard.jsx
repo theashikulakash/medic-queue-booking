@@ -19,7 +19,7 @@ const AppointmentCard = ({ appointment }) => {
     appointmentTime,
   } = appointment;
 
-  const doctorLink = doctorId ? `/doctors/${doctorId}` : '#';
+  const doctorLink = doctorId ? `/appointment/${doctorId}` : '#';
   const router = useRouter();
 
   const handleDelete = async () => {
@@ -29,7 +29,8 @@ const AppointmentCard = ({ appointment }) => {
     try {
       const { data: tokenData } = await authClient.token();
       const baseUrl = process.env.NEXT_PUBLIC_SERVER_URL;
-      const url = baseUrl ? `${baseUrl}/appointment/${appointment._id || appointment.id}` : `/appointment/${appointment._id || appointment.id}`;
+      const bookingId = appointment._id || appointment.id;
+      const url = baseUrl ? `${baseUrl}/bookings/${bookingId}` : `/bookings/${bookingId}`;
 
       const res = await fetch(url, {
         method: 'DELETE',

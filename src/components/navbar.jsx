@@ -30,12 +30,11 @@ const Navbar = () => {
               <Link href={"/"}>Home</Link>
             </li>
             <li>
-              <Link href={"/appointments"}>All Appointment</Link>
-            </li>
-
-            <li>
-              <Link href={"/doctors"}>Doctors</Link>
-            </li>
+            <Link href={"/appointment"}>All Appointments</Link>
+          </li>
+          <li>
+            <Link href={"/bookings"}>Bookings</Link>
+          </li>
             <li>
               <Link href={"/dashboard"}>Dashboard</Link>
             </li>
@@ -62,12 +61,13 @@ const Navbar = () => {
             <Link href={"/"}>Home</Link>
           </li>
           <li>
-            <Link href={"/appointments"}>All Appointment</Link>
+            <Link href={"/appointment"}>All Appointments</Link>
+          </li>
+          <li>
+            <Link href={"/bookings"}>Bookings</Link>
           </li>
 
-          <li>
-            <Link href={"/doctors"}>Doctors</Link>
-          </li>
+          
           <li>
             <Link href={"/dashboard"}>Dashboard</Link>
           </li>

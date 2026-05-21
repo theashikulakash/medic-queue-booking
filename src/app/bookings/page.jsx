@@ -5,7 +5,7 @@ import { getAppointment } from '@/lib/appointment';
 import AppointmentsClient from '@/components/appointmentsClient';
 import Footer from '@/components/footer';
 
-const Appointments = async () => {
+const Bookings = async () => {
   const appointments = await getAppointment();
 
   return (
@@ -18,7 +18,7 @@ const Appointments = async () => {
               Upcoming Visits
             </p>
             <h1 className="mt-4 text-3xl font-semibold text-slate-900 sm:text-4xl">
-              Patient Appointments
+              Your Bookings
             </h1>
             <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-slate-600">
               Your booked appointments appear below when you are signed in.
@@ -33,4 +33,4 @@ const Appointments = async () => {
   );
 };
 
-export default Appointments;
+export default Bookings;

@@ -37,9 +37,9 @@ const Hero = () => {
                                 Browse Doctors
                             </Button>
                         </Link>
-                        <Link href="/appointments">
+                        <Link href="/bookings">
                             <Button variant="danger-soft" className="rounded-full px-6 py-3">
-                                Appointments
+                                Bookings
                             </Button>
                         </Link>
                     </div>

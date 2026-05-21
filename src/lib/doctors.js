@@ -7,7 +7,7 @@ export async function getDoctors() {
   }
 
   try {
-    const res = await fetch(`${baseUrl}/doctors`, {
+    const res = await fetch(`${baseUrl}/appointment`, {
       cache: 'no-store',
     });
 

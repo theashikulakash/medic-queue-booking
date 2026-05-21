@@ -39,8 +39,8 @@ const BookModal = ({ defaultDoctorId, defaultDoctorName }) => {
         try {
             const { data: tokenData } = await authClient.token();
             const url = process.env.NEXT_PUBLIC_SERVER_URL
-                ? `${process.env.NEXT_PUBLIC_SERVER_URL}/appointment`
-                : '/appointment';
+                ? `${process.env.NEXT_PUBLIC_SERVER_URL}/bookings`
+                : '/bookings';
 
             const res = await fetch(url, {
                 method: 'POST',
@@ -58,7 +58,7 @@ const BookModal = ({ defaultDoctorId, defaultDoctorName }) => {
             const data = await res.json();
             console.log('Appointment saved', data);
             toast.success('You booked successfully!');
-            router.push('/appointments');
+            router.push('/bookings');
         } catch (error) {
             console.error('Booking failed', error);
             toast.error('Booking failed. Please try again.');

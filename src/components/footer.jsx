@@ -41,7 +41,7 @@ const Footer = () => {
                         <h3 className="text-white mb-3 tracking-wide">QUICK LINKS</h3>
                         <ul className="space-y-2">
                             <li className="hover:text-white cursor-pointer">Home</li>
-                            <li className="hover:text-white cursor-pointer">All Appointment</li>
+                            <li className="hover:text-white cursor-pointer">All Appointments</li>
                             <li className="hover:text-white cursor-pointer">Doctors</li>
                             <li className="hover:text-white cursor-pointer">Dashboard</li>
                         </ul>

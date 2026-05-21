@@ -5,7 +5,7 @@ export async function getAppointment() {
     throw new Error('Environment variable NEXT_PUBLIC_SERVER_URL is not defined');
   }
 
-  const res = await fetch(`${baseUrl}/appointments`, {
+  const res = await fetch(`${baseUrl}/bookings`, {
     cache: 'no-store',
   });
 
