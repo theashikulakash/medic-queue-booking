@@ -34,8 +34,8 @@ const LoginPage = () => {
     const user = Object.fromEntries(formData.entries());
 
     const { data, error } = await authClient.signIn.email({
-      email: user.email as string,
-      password: user.password as string,
+      email: user.email,
+      password: user.password,
     });
 
     if (error) {
