@@ -3,12 +3,14 @@
 import { Button } from '@heroui/react';
 import Link from 'next/link';
 import React from 'react';
+import BookingUpdateModal from '@/components/bookingUpdateModal';
 import { authClient } from '@/lib/auth-client';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/navigation';
 
 const AppointmentCard = ({ appointment }) => {
   const {
+    _id,
     userEmail,
     doctorName,
     doctorId,
@@ -101,6 +103,7 @@ const AppointmentCard = ({ appointment }) => {
               View Details
             </Button>
           </Link>
+          <BookingUpdateModal appointment={appointment} buttonLabel="Update" buttonClassName="ml-2" />
           <Button variant="danger" onClick={handleDelete} className="ml-2">
             Delete
           </Button>
