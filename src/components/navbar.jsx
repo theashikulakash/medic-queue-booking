@@ -104,8 +104,8 @@ const Navbar = () => {
                       alt="John Doe"
                       className="h-full w-full object-cover"
                       src={user?.image} />
-                  </Link>
                   <Avatar.Fallback>{user.name.charAt(0)}</Avatar.Fallback>
+                  </Link>
                 </Avatar>
               </li>
               <li>
