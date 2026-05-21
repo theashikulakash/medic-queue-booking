@@ -7,7 +7,7 @@ import Link from "next/link";
 import React from "react";
 
 const Navbar = () => {
-  const { data: session } = authClient.useSession();
+  const { data: session, isPending } = authClient.useSession();
   const user = session?.user;
 
   const handleSignOut = async () => {
@@ -94,7 +94,9 @@ const Navbar = () => {
           <Link href={"/profile"}>Profile</Link>
         </li> */}
 
-          {user ?
+          {isPending ? (
+            <div className="h-10 w-10 bg-gray-200 rounded-full animate-pulse"></div>
+          ) : user ? (
             <>
               <li>
                 <Avatar>
@@ -114,7 +116,7 @@ const Navbar = () => {
                 </Button>
               </li>
             </>
-            :
+          ) : (
             <>
               <li>
                 <Link href={"/login"}>Login</Link>
@@ -123,7 +125,7 @@ const Navbar = () => {
                 <Link href={"/signup"}>Sign Up</Link>
               </li>
             </>
-          }
+          )}
         </ul>
 
 
