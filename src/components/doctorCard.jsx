@@ -6,6 +6,7 @@ import { authClient } from '@/lib/auth-client';
 import BookModal from '@/components/bookModal';
 import { Button } from '@heroui/react';
 import Image from 'next/image';
+export const dynamic = 'force-dynamic';
 
 const DoctorCard = ({ doctor }) => {
     const { _id, id, name, specialty, image, experience, availability, description, hospital, location, fee } = doctor;

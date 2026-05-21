@@ -1,5 +1,6 @@
 import DoctorDetailsClient from '@/components/doctorDetailsClient';
 import { headers } from "next/headers";
+export const dynamic = 'force-dynamic';
 
 const DoctorDetails = async ({ params }) => {
     const { id } = await params;
