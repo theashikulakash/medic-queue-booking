@@ -60,7 +60,7 @@ const DashboardClient = ({ appointments = [] }) => {
     };
 
     fetchProfile();
-  }, [user?.email, user?.name, apiUrl]);
+  }, [user?.email, apiUrl]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
