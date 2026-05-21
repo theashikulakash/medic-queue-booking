@@ -3,6 +3,7 @@ import React from 'react';
 import DoctorCard from '@/components/doctorCard';
 import Navbar from '@/components/navbar';
 import { getDoctors } from '@/lib/doctors';
+export const dynamic = 'force-dynamic';
 
 const DoctorsPage = async () => {
   const doctorsList = await getDoctors();

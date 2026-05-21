@@ -6,6 +6,7 @@ import TopDoctors from "@/components/topdoctors";
 import Service from "@/components/service";
 import Newsletter from "@/components/newsletter";
 import Testimonials from "@/components/testimonials";
+export const dynamic = 'force-dynamic';
 // import Image from "next/image";
 
 export default function Home() {
