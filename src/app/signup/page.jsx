@@ -17,6 +17,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Footer from "@/components/footer";
 import Navbar from "@/components/navbar";
+import Link from "next/link";
 
 const SignUpPage = () => {
     const router = useRouter();
@@ -102,20 +103,29 @@ const SignUpPage = () => {
                                 <Input className="bg-slate-100 border-slate-200 w-full  text-slate-900" placeholder="john@example.com" />
                                 <FieldError />
                             </TextField>
-                            <TextField
+                            {/* <TextField
                                 isRequired
-                                minLength={8}
+                                minLength={6}
                                 name="password"
                                 type="password"
                                 validate={(value) => {
-                                    if (value.length < 8) {
-                                        return "Password must be at least 8 characters";
+                                    if (!/^(?=.*[a-z])(?=.*[A-Z]).{6,}$/.test(value)) {
+                                        return "Password must be at least 6 characters and include 1 uppercase and 1 lowercase letter";
                                     }
-                                    if (!/[A-Z]/.test(value)) {
-                                        return "Password must contain at least one uppercase letter";
-                                    }
-                                    if (!/[0-9]/.test(value)) {
-                                        return "Password must contain at least one number";
+                                    return null;
+                                }}
+                            > */}
+
+
+
+
+                            <TextField
+                                isRequired
+                                name="password"
+                                type="password"
+                                validate={(value) => {
+                                    if (!/^(?=.*[a-z])(?=.*[A-Z]).{6,}$/.test(value)) {
+                                        return "Password must be at least 6 characters and include 1 uppercase and 1 lowercase letter";
                                     }
                                     return null;
                                 }}
@@ -123,7 +133,7 @@ const SignUpPage = () => {
                                 <Label>Password</Label>
                                 <Input className="bg-slate-100 border-slate-200 w-full  text-slate-900" placeholder="Enter your password" />
                                 <Description>
-                                    Must be at least 8 characters with 1 uppercase and 1 number
+                                    Must be at least 6 characters and include 1 uppercase and 1 lowercase letter
                                 </Description>
                                 <FieldError />
                             </TextField>
@@ -132,6 +142,11 @@ const SignUpPage = () => {
                                     Create Account
                                 </Button>
                             </div>
+                            <Link href="/login" className="text-center">
+                                <Button variant="ghost">
+                                    Already have an account? Login.
+                                </Button>
+                            </Link>
                         </Form>
                         <div>
                             <div className="flex flex-row items-center py-4">

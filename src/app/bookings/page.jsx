@@ -2,7 +2,7 @@ import React from 'react';
 
 import Navbar from '@/components/navbar';
 import { getAppointment } from '@/lib/appointment';
-import AppointmentsClient from '@/components/appointmentsClient';
+import BookingsClient from '@/components/bookingsClient';
 import Footer from '@/components/footer';
 
 const Bookings = async () => {
@@ -25,7 +25,7 @@ const Bookings = async () => {
             </p>
           </div>
 
-          <AppointmentsClient appointments={appointments} />
+          <BookingsClient appointments={appointments} />
         </div>
       </main>
       <Footer />

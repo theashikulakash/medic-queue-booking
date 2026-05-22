@@ -1,8 +1,9 @@
 import React from 'react';
 
-import DoctorCard from '@/components/doctorCard';
+import AppointmentPageClient from '@/components/appointmentPageClient';
 import Navbar from '@/components/navbar';
 import { getDoctors } from '@/lib/doctors';
+import Footer from '@/components/footer';
 export const dynamic = 'force-dynamic';
 
 const DoctorsPage = async () => {
@@ -26,13 +27,10 @@ const DoctorsPage = async () => {
           </p>
         </div>
 
-        <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
-          {doctorsList.map((doctor) => (
-            <DoctorCard key={doctor.id} doctor={doctor} />
-          ))}
-        </div>
+        <AppointmentPageClient doctorsList={doctorsList} />
       </div>
     </main>
+    <Footer />
     </section>
    
   );

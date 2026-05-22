@@ -17,6 +17,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
+import Link from "next/link";
 
 const LoginPage = () => {
   const router = useRouter();
@@ -125,6 +126,16 @@ const LoginPage = () => {
                   Login
                 </Button>
               </div>
+              <Link href="/signup" className="text-center">
+              <Button variant="danger-soft">
+                Forget password
+              </Button>
+              </Link>
+              <Link href="/signup" className="text-center">
+              <Button variant="ghost">
+                Dont have an account? Register.
+              </Button>
+              </Link>
             </Form>
 
             <div className="flex flex-row items-center py-4">

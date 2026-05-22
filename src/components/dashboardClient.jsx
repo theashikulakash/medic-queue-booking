@@ -16,6 +16,7 @@ const DashboardClient = ({ appointments = [] }) => {
     email: "",
     gender: "",
     phone: "",
+    image: "",
   });
   const [loading, setLoading] = useState(false);
   const [saving, setSaving] = useState(false);
@@ -50,6 +51,7 @@ const DashboardClient = ({ appointments = [] }) => {
           email: data.email || user.email || "",
           gender: data.gender || "",
           phone: data.phone || "",
+          image: data.image || user.image || "",
         });
       } catch (err) {
         console.error(err);
@@ -79,6 +81,7 @@ const DashboardClient = ({ appointments = [] }) => {
           name: profile.name,
           gender: profile.gender,
           phone: profile.phone,
+          image: profile.image,
         }),
       });
 
@@ -137,7 +140,7 @@ const DashboardClient = ({ appointments = [] }) => {
             </div>
           </div>
 
-          <Form onSubmit={handleSubmit} className="grid gap-5">
+          <Form onSubmit={handleSubmit} className="grid gap-5 text-black">
             <div className="grid gap-5 md:grid-cols-2">
               <TextField name="name" className="w-full">
                 <Label>Name</Label>
@@ -179,6 +182,19 @@ const DashboardClient = ({ appointments = [] }) => {
                   value={profile.gender}
                   onChange={(event) => setProfile((prev) => ({ ...prev, gender: event.target.value }))}
                   placeholder="Gender"
+                  className="bg-slate-100 text-slate-900"
+                />
+              </TextField>
+            </div>
+
+            <div className="grid gap-5 md:grid-cols-2">
+              <TextField name="image" className="w-full md:col-span-2">
+                <Label>Profile Image URL</Label>
+                <Input
+                  type="url"
+                  value={profile.image}
+                  onChange={(event) => setProfile((prev) => ({ ...prev, image: event.target.value }))}
+                  placeholder="https://example.com/image.jpg"
                   className="bg-slate-100 text-slate-900"
                 />
               </TextField>
