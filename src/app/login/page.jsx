@@ -126,7 +126,7 @@ const LoginPage = () => {
                   Login
                 </Button>
               </div>
-              <Link href="/signup" className="text-center">
+              <Link href="/login" className="text-center">
               <Button variant="danger-soft">
                 Forget password
               </Button>
