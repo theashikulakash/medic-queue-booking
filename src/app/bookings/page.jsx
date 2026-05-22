@@ -5,6 +5,12 @@ import { getAppointment } from '@/lib/appointment';
 import BookingsClient from '@/components/bookingsClient';
 import Footer from '@/components/footer';
 
+export const metadata = {
+  title: "My Bookings - Medic Queue",
+  description: "View and manage your booked doctor appointments. Update or cancel your bookings with ease.",
+  robots: "noindex, nofollow",
+};
+
 const Bookings = async () => {
   const appointments = await getAppointment();
 

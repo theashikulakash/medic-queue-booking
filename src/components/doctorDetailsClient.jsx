@@ -87,12 +87,8 @@ const DoctorDetailsClient = ({ doctor }) => {
         },
         body: JSON.stringify({
           doctorId,
-          doctorName: name,
-          userId: user.id,
-          userName: user.name,
-          rating,
           reviewText,
-          userEmail: user.email,
+          stars: rating,
         }),
       });
 
@@ -113,7 +109,7 @@ const DoctorDetailsClient = ({ doctor }) => {
   };
 
   const averageRating = reviews.length > 0 
-    ? (reviews.reduce((sum, r) => sum + (r.rating || 0), 0) / reviews.length).toFixed(1)
+    ? (reviews.reduce((sum, r) => sum + (r.stars || 0), 0) / reviews.length).toFixed(1)
     : 0;
 
   return (
@@ -276,7 +272,7 @@ const DoctorDetailsClient = ({ doctor }) => {
                       <div className="flex gap-1">
                         {[...Array(5)].map((_, i) => (
                           <span key={i} className="text-lg">
-                            {i < review.rating ? '⭐' : '☆'}
+                            {i < review.stars ? '⭐' : '☆'}
                           </span>
                         ))}
                       </div>

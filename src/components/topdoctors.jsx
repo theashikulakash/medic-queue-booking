@@ -5,10 +5,54 @@ export const dynamic = 'force-dynamic';
 
 const TopDoctors = async () => {
   const doctorsList = await getDoctors();
+  const baseUrl = process.env.NEXT_PUBLIC_SERVER_URL;
+  const reviewsUrl = baseUrl ? `${baseUrl}/reviews` : '/reviews';
 
- const selectedDoctors = [...doctorsList]
-  .sort(() => Math.random() - 0.5)
-  .slice(0, 3);
+  let reviews = [];
+  try {
+    const res = await fetch(reviewsUrl, { cache: 'no-store' });
+    if (res.ok) {
+      reviews = await res.json();
+    }
+  } catch (err) {
+    console.error('Failed to load reviews for top doctors:', err);
+  }
+
+  const ratingMap = new Map();
+  reviews.forEach((review) => {
+    const doctorId = review.doctorId?.toString?.() || review.doctorId;
+    if (!doctorId) return;
+
+    const existing = ratingMap.get(doctorId) || { sum: 0, count: 0 };
+    ratingMap.set(doctorId, {
+      sum: existing.sum + (review.stars || 0),
+      count: existing.count + 1,
+    });
+  });
+
+  const doctorsWithRating = doctorsList.map((doctor) => {
+    const doctorId = doctor._id?.toString?.() || doctor.id?.toString?.();
+    const ratingData = ratingMap.get(doctorId);
+    const averageRating = ratingData ? ratingData.sum / ratingData.count : 0;
+
+    return {
+      ...doctor,
+      averageRating,
+      reviewCount: ratingData?.count || 0,
+    };
+  });
+
+  const selectedDoctors = doctorsWithRating
+    .sort((a, b) => {
+      if (b.averageRating !== a.averageRating) {
+        return b.averageRating - a.averageRating;
+      }
+      if (b.reviewCount !== a.reviewCount) {
+        return b.reviewCount - a.reviewCount;
+      }
+      return (a.name || '').localeCompare(b.name || '');
+    })
+    .slice(0, 3);
 
   return (
         <section className="space-y-6 px-4 py-8 md:px-6">

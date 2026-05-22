@@ -6,6 +6,12 @@ import { getAppointment } from '@/lib/appointment';
 
 export const dynamic = 'force-dynamic';
 
+export const metadata = {
+  title: "My Dashboard - Medic Queue",
+  description: "Manage your profile, view appointments, and update your personal information.",
+  robots: "noindex, nofollow",
+};
+
 const DashboardPage = async () => {
   const appointments = await getAppointment();
 

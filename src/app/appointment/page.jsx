@@ -6,6 +6,13 @@ import { getDoctors } from '@/lib/doctors';
 import Footer from '@/components/footer';
 export const dynamic = 'force-dynamic';
 
+export const metadata = {
+  title: "Browse Doctors - Medic Queue",
+  description: "Discover and book appointments with certified doctors and specialists. Search by name, specialty, experience, and fees.",
+  keywords: ["find doctor", "book appointment", "specialist", "medical consultation"],
+  robots: "index, follow",
+};
+
 const DoctorsPage = async () => {
   const doctorsList = await getDoctors();
 

@@ -2,76 +2,124 @@
 
 import { useState, useRef } from "react";
 import { Star, ChevronLeft, ChevronRight } from "@gravity-ui/icons";
+import { Button } from "@heroui/react";
+import Link from "next/link";
 
 const Testimonials = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const containerRef = useRef(null);
 
-  const testimonials = [
-    {
-      id: 1,
-      name: "Sarah Johnson",
-      role: "Patient",
-      text: "Excellent service! The doctor appointment booking was so easy and convenient. Got my appointment within minutes.",
-      rating: 5,
-      image: "SJ",
-      color: "bg-blue-100 text-blue-700",
-    },
-    {
-      id: 2,
-      name: "Dr. Michael Chen",
-      role: "Healthcare Provider",
-      text: "This platform has transformed how I manage appointments. My patients love the simplicity and I save hours on scheduling.",
-      rating: 5,
-      image: "MC",
-      color: "bg-purple-100 text-purple-700",
-    },
-    {
-      id: 3,
-      name: "Emily Rodriguez",
-      role: "Patient",
-      text: "I was impressed by the quick response time and professional handling of my appointment. Highly recommended!",
-      rating: 5,
-      image: "ER",
-      color: "bg-pink-100 text-pink-700",
-    },
-    {
-      id: 4,
-      name: "James Wilson",
-      role: "Patient",
-      text: "Finally, an appointment system that actually works! No more waiting on hold. Booking is instantaneous.",
-      rating: 4,
-      image: "JW",
-      color: "bg-green-100 text-green-700",
-    },
-    {
-      id: 5,
-      name: "Dr. Priya Patel",
-      role: "Healthcare Provider",
-      text: "Reliable, efficient, and user-friendly. Our clinic's productivity has increased significantly since we started using this.",
-      rating: 5,
-      image: "PP",
-      color: "bg-yellow-100 text-yellow-700",
-    },
-    {
-      id: 6,
-      name: "David Thompson",
-      role: "Patient",
-      text: "The interface is intuitive and I appreciate the reminder notifications. Never missed an appointment again.",
-      rating: 5,
-      image: "DT",
-      color: "bg-indigo-100 text-indigo-700",
-    },
-    {
-      id: 7,
-      name: "Lisa Anderson",
-      role: "Patient",
-      text: "Outstanding experience from start to finish. The support team is responsive and helpful. Worth every feature!",
-      rating: 5,
-      image: "LA",
-      color: "bg-cyan-100 text-cyan-700",
-    },
-  ];
+ const testimonials = [
+  {
+    id: 1,
+    name: "Rahat Chowdhury",
+    role: "Patient",
+    text: "Booking an appointment with Dr. Ayesha Rahman was incredibly seamless. The platform saved me hours of waiting in line at Labaid.",
+    rating: 5,
+    image: "RC",
+    color: "bg-blue-100 text-blue-700",
+  },
+  {
+    id: 2,
+    name: "Dr. Ayesha Rahman",
+    role: "Healthcare Provider",
+    text: "This platform has transformed how I manage my cardiac patients at Labaid. The scheduling flow is smooth and intuitive.",
+    rating: 5,
+    image: "AR",
+    color: "bg-purple-100 text-purple-700",
+  },
+  {
+    id: 3,
+    name: "Nusrat Jahan",
+    role: "Patient",
+    text: "I managed to secure a slot with Prof. Dr. M. A. Baqui for my chronic migraines within minutes. Highly efficient system!",
+    rating: 5,
+    image: "NJ",
+    color: "bg-pink-100 text-pink-700",
+  },
+  {
+    id: 4,
+    name: "Prof. Dr. M. A. Baqui",
+    role: "Healthcare Provider",
+    text: "Managing complex neurology consultations at Square Hospital is much easier now. Patients appreciate the instant confirmation.",
+    rating: 5,
+    image: "MB",
+    color: "bg-green-100 text-green-700",
+  },
+  {
+    id: 5,
+    name: "Farzana Akter",
+    role: "Patient",
+    text: "Finding Dr. Nusrat Zaman and booking a consultation at Apollo Imperial was effortless. Best medical booking experience in Chattogram.",
+    rating: 5,
+    image: "FA",
+    color: "bg-yellow-100 text-yellow-700",
+  },
+  {
+    id: 6,
+    name: "Dr. Nusrat Zaman",
+    role: "Healthcare Provider",
+    text: "The platform's interface reduces overhead communication for my gynecology unit, letting me focus purely on patient care.",
+    rating: 5,
+    image: "NZ",
+    color: "bg-indigo-100 text-indigo-700",
+  },
+  {
+    id: 7,
+    name: "Asif Istiak",
+    role: "Patient",
+    text: "I was worried about securing a serial for Dr. Baqui at Square Hospital, but this application made the entire process instantaneous.",
+    rating: 4,
+    image: "AI",
+    color: "bg-cyan-100 text-cyan-700",
+  },
+  {
+    id: 8,
+    name: "Sadia Afrin",
+    role: "Patient",
+    text: "Excellent service! Received automated reminders for my checkup with Dr. Ayesha Rahman, so I never missed my appointment slot.",
+    rating: 5,
+    image: "SA",
+    color: "bg-teal-100 text-teal-700",
+  },
+  {
+    id: 9,
+    name: "Tamim Iqbal",
+    role: "Patient",
+    text: "The fee structure and availability for Dr. Nusrat Zaman were clearly listed. No hidden charges, completely transparent processing.",
+    rating: 5,
+    image: "TI",
+    color: "bg-orange-100 text-orange-700",
+  },
+  {
+    id: 10,
+    name: "Imran Khan",
+    role: "Patient",
+    text: "Highly recommended application. Got my father's heart screening session booked with Dr. Ayesha without any payment hassles.",
+    rating: 5,
+    image: "IK",
+    color: "bg-emerald-100 text-emerald-700",
+  },
+  {
+    id: 11,
+    name: "Mehedi Hasan",
+    role: "Patient",
+    text: "The UI is clean and fast. Searching for a specialist like Prof. Dr. M. A. Baqui by location made finding the right chamber easy.",
+    rating: 4,
+    image: "MH",
+    color: "bg-rose-100 text-rose-700",
+  },
+  {
+    id: 12,
+    name: "Tasnim Rahman",
+    role: "Patient",
+    text: "Outstanding digital healthcare experience. Booking an emergency consultation at Apollo Imperial with Dr. Nusrat was painless.",
+    rating: 5,
+    image: "TR",
+    color: "bg-violet-100 text-violet-700",
+  },
+];
+
 
   const handleNext = () => {
     setCurrentIndex((prev) => (prev + 1) % testimonials.length);
@@ -171,14 +219,21 @@ const Testimonials = () => {
             <button
               key={idx}
               onClick={() => setCurrentIndex(idx)}
-              className={`h-2 rounded-full transition-all ${
-                idx === currentIndex
+              className={`h-2 rounded-full transition-all ${idx === currentIndex
                   ? "w-8 bg-cyan-600"
                   : "w-2 bg-slate-300 hover:bg-slate-400"
-              }`}
+                }`}
             />
           ))}
         </div>
+        <div className="mt-8 flex justify-center">
+          <Link href="/testimonials">
+            <Button>
+              All Testimonials
+            </Button>
+          </Link>
+        </div>
+
       </div>
     </section>
   );
